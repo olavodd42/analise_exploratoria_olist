@@ -78,12 +78,14 @@ O objetivo principal é **compreender o comportamento dos clientes e identificar
 
 ## 🔹 Estrutura do Projeto
 
+```
 📦 olist-eda-marketing
  ┣ 📂 data/                  # datasets (não versionados)
  ┣ 📂 notebooks/             # notebooks de análise
  ┣ 📂 outputs/               # gráficos e relatórios gerados
  ┣ 📜 requirements.txt       # dependências
  ┣ 📜 README.md              # este arquivo
+```
 
 ---
 
