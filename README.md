@@ -1,8 +1,8 @@
 # 📦 Análise Exploratória de E-commerce (Olist)
 
-Este projeto realiza uma **Análise Exploratória de Dados (EDA)** com foco em **insights de marketing** utilizando o [Olist Brazilian E-commerce Dataset](https://www.kaggle.com/datasets/olistbr/brazilian-ecommerce).
+Este projeto realiza uma **Análise Exploratória de Dados (EDA)** com foco em **insights de marketing e comportamento de clientes** utilizando o [Olist Brazilian E-commerce Dataset](https://www.kaggle.com/datasets/olistbr/brazilian-ecommerce).
 
-O objetivo principal é **compreender o comportamento dos clientes e identificar oportunidades para estratégias de marketing**, como fidelização, upsell, cross-sell e campanhas de reativação.
+O objetivo é **entender o perfil dos clientes, padrões de compra e pontos de melhoria na experiência de e-commerce**, gerando insumos práticos para estratégias como fidelização, upsell, cross-sell e reativação de clientes.
 
 ---
 
@@ -12,7 +12,7 @@ O objetivo principal é **compreender o comportamento dos clientes e identificar
 
    * Quantidade de clientes por estado.
    * Ticket médio (faturamento / nº de pedidos) por UF.
-   * Identificação das regiões de maior potencial de valor.
+   * Regiões com maior potencial de valor.
 
 2. **Produtos e Categorias**
 
@@ -23,53 +23,55 @@ O objetivo principal é **compreender o comportamento dos clientes e identificar
 3. **Entrega x Satisfação (Atraso vs. Review)**
 
    * Correlação entre atraso de entrega e notas de review.
-   * Identificação de gargalos logísticos que impactam satisfação.
+   * Gargalos logísticos que impactam a satisfação.
 
 4. **RFM Analysis (Recency, Frequency, Monetary)**
 
-   * Segmentação de clientes com base em:
+   * Segmentação de clientes por:
 
-     * Recency: tempo desde a última compra.
-     * Frequency: número de pedidos realizados.
-     * Monetary: total gasto.
-   * Criação de segmentos como **Campeões, Fiéis, Em Risco, Perdidos**.
-   * Visualização da distribuição de clientes por segmento.
+     * **Recency**: tempo desde a última compra.
+     * **Frequency**: nº de pedidos.
+     * **Monetary**: total gasto.
+   * Geração de segmentos como **Campeões, Fiéis, Em Risco, Perdidos**.
+   * Visualização e insights de retenção/fidelização.
 
 5. **Dashboard Interativo (Streamlit)**
 
    * KPIs principais (pedidos, faturamento, ticket médio, % entregas no prazo).
    * Gráficos interativos por **UF, tempo, categorias, reviews e segmentos RFM**.
-   * Possibilidade de aplicar filtros (período, estados) e exportar dados em CSV.
+   * Filtros (período, estados, tipo de pagamento, remoção de outliers).
+   * Mapas interativos com **PyDeck/OSM** mostrando ticket médio por estado.
+   * Possibilidade de exportar resultados em CSV.
 
 6. **Insights Automáticos**
 
-   * Bullet points gerados a partir das métricas (ticket médio, categorias líderes, impacto de atraso em reviews, principais segmentos RFM).
+   * Resumo em bullet points com achados de maior impacto (ticket médio, categorias líderes, atraso x reviews, segmentos RFM).
 
 ---
 
 ## 🔹 Principais Insights
 
-* 🎯 **20% dos clientes concentram a maior parte do faturamento (segmento Campeões)** → oportunidade para programas VIP.
-* 🚚 **Atrasos de entrega acima de 7 dias reduzem a nota média de review em \~40%** → impacto direto na satisfação.
-* 🛍️ **Categoria "beleza\_saude" lidera em volume, mas com ticket médio baixo** → ideal para cross-sell.
-* 📍 **Clientes do Sudeste têm ticket médio maior**, mas o Nordeste apresenta crescimento → oportunidade para expansão regional.
-* ⏰ **Clientes em risco representam parcela significativa da base** → campanhas de reativação podem gerar bom retorno.
+* 🎯 **20% dos clientes concentram a maior parte do faturamento (segmento Campeões)** → programas VIP e fidelização.
+* 🚚 **Atrasos de entrega acima de 7 dias reduzem a nota média em \~40%** → necessidade de otimização logística.
+* 🛍️ **Categoria "beleza\_saude" tem alto volume mas ticket baixo** → indicada para cross-sell.
+* 📍 **Sudeste apresenta ticket médio mais alto**, mas o **Nordeste cresce em volume** → expansão regional estratégica.
+* ⏰ **Clientes em risco representam parcela relevante da base** → campanhas de reativação podem gerar retorno expressivo.
 
 ---
 
 ## 🔹 Tecnologias Utilizadas
 
 * **Python 3.10+**
-* **Pandas** para manipulação de dados
-* **Matplotlib / Seaborn** para visualização
+* **Pandas / NumPy** para manipulação de dados
+* **Matplotlib / Seaborn / Altair** para visualização
 * **Jupyter Notebook** para exploração e storytelling
-* **Streamlit** para construção do dashboard interativo
+* **Streamlit + PyDeck** para dashboard interativo
 
 ---
 
 ## 🔹 Como Reproduzir
 
-1. Clone este repositório:
+1. Clone o repositório:
 
    ```bash
    git clone https://github.com/seuusuario/olist-eda-marketing.git
@@ -90,15 +92,15 @@ O objetivo principal é **compreender o comportamento dos clientes e identificar
    pip install -r requirements.txt
    ```
 
-4. Baixe o dataset da Olist no [Kaggle](https://www.kaggle.com/datasets/olistbr/brazilian-ecommerce) e extraia os CSVs dentro da pasta `data/`.
+4. Baixe o dataset da Olist no [Kaggle](https://www.kaggle.com/datasets/olistbr/brazilian-ecommerce) e extraia os CSVs em `data/`.
 
-5. Execute as análises no notebook:
+5. Rode as análises no notebook:
 
    ```bash
    jupyter notebook notebooks/notebook_rfm_enriquecido.ipynb
    ```
 
-6. Execute o dashboard interativo:
+6. Execute o dashboard:
 
    ```bash
    streamlit run app.py
@@ -110,22 +112,22 @@ O objetivo principal é **compreender o comportamento dos clientes e identificar
 
 ```
 📦 olist-eda-marketing
- ┣ 📂 data/                  # datasets (não versionados)
- ┣ 📂 notebooks/             # notebooks de análise
- ┣ 📂 outputs/               # gráficos e relatórios gerados
+ ┣ 📂 data/                  # datasets originais (não versionados)
+ ┣ 📂 notebooks/             # análises exploratórias e RFM
+ ┣ 📂 outputs/               # gráficos e tabelas exportadas
  ┣ 📜 app.py                 # dashboard interativo (Streamlit)
- ┣ 📜 requirements.txt       # dependências
- ┣ 📜 README.md              # este arquivo
+ ┣ 📜 requirements.txt       # dependências do projeto
+ ┣ 📜 README.md              # documentação
 ```
 
 ---
 
 ## 🔹 Próximos Passos
 
-* Adicionar mapas interativos por UF (PyDeck ou GeoPandas).
-* Implementar modelos preditivos de churn ou propensão de compra usando machine learning.
-* Explorar análise de reviews textuais (NLP) para complementar a visão quantitativa.
-* Criar testes unitários para funções de pré-processamento de dados.
+* Melhorar visualização geográfica com mapas coropléticos (GeoPandas/Plotly).
+* Implementar modelo preditivo de **churn** e **propensão à recompra**.
+* Analisar reviews textuais (NLP) para enriquecer insights qualitativos.
+* Adicionar testes unitários e pipeline de CI/CD.
 
 ---
 
